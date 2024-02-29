@@ -1,0 +1,17 @@
+mixin cc-form-options(data = {})
+    ul.cc-form-options&attributes(attributes)
+        each option, index in data.options
+            - const isFirst = index === 0
+
+            li.cc-form-options__option
+                label.cc-form-options__field
+                    input.cc-form-options__field-input(
+                        type="radio"
+                        name="cc-form-option"
+                        value=option.value
+                        checked=isFirst
+                    )
+
+                    strong.cc-form-options__field-text
+                        b.cc-form-options__field-name= option.name
+                        span.cc-form-options__field-descr= option.descr
