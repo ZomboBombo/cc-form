@@ -1,6 +1,6 @@
-extends ../base/layout
+extends ../core/layout
 
-block variables
+append variables
     - const title = 'Счётчик калорий | HTML Academy'
 
 block main
@@ -10,12 +10,12 @@ block main
                 hgroup.cc-form__title-box
                     h1.cc-form__title Счётчик калорий
                     p.cc-form__title-desc Расчёт суточной нормы потребления калорий в зависимости от индивидуальных параметров
-            
-            .cc-form__wrapp
+
+            .cc-form__section.cc-form__wrapp
                 fieldset.cc-form__fieldset
                     legend.cc-form__fieldset-title Пол
                     +cc-form-switch()
-                
+
                 fieldset.cc-form__fieldset
                     legend.cc-form__fieldset-title Параметры
                     +cc-form-params({
@@ -25,7 +25,7 @@ block main
                             {id: 'weight', name: 'Вес', unit: 'кг', minmax: [2, 3]},
                         ]
                     })
-                
+
                 fieldset.cc-form__fieldset
                     legend.cc-form__fieldset-title Физическая активность
                     +cc-form-options({
@@ -41,17 +41,19 @@ block main
                 .cc-form__actions
                     button.cc-form__action-btn(type="submit" aria-label="Рассчитать норму калорий") Рассчитать
                     button.cc-form__action-btn(type="reset" aria-label="Сбросить все введённые данные") Очистить поля и расчёт
-            
-            footer.cc-form__footer
+
+            footer.cc-form__section.cc-form__footer(data-output="parent")
                 h2.cc-form__footer-title Ваша норма калорий
-                
-                .cc-form__footer-output
-                    output(data-output="weight-save")
-                        strong #[span(data-output-place) 0000] ккал
-                        span поддержание веса 
-                    output(data-output="weight-loss")
-                        strong #[span(data-output-place) 0000] ккал
-                        span снижение веса 
-                    output(data-output="weight-gain")
-                        strong #[span(data-output-place) 0000] ккал
-                        span набор веса 
+
+                .cc-form__footer-output-list
+                    output.cc-form__output(data-output="weight-save")
+                        strong.cc-form__output-value #[span(data-output-val) 0000] ккал
+                        span.cc-form__output-descr поддержание веса
+
+                    output.cc-form__output(data-output="weight-loss")
+                        strong.cc-form__output-value #[span(data-output-val) 0000] ккал
+                        span.cc-form__output-descr снижение веса
+
+                    output.cc-form__output(data-output="weight-gain")
+                        strong.cc-form__output-value #[span(data-output-val) 0000] ккал
+                        span.cc-form__output-descr набор веса

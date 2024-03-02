@@ -2,7 +2,7 @@ mixin cc-form-params(data = {})
     .cc-form-params&attributes(attributes)
         each param in data.params
             label.cc-form-params__param
-                strong.cc-form-params__param-name= param.name
+                strong.cc-form-params__param-name= `${param.name},`
                     small.cc-form-params__param-name-unit= param.unit
                 
                 input.cc-form-params__input(
