@@ -1,0 +1,85 @@
+@use '../core/mix' as *;
+
+.cc-form-options {
+    @include reset-list;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.8rem;
+
+    &__field {
+        $circle-size: 0.75em;
+        $circle-brd-size: 0.2rem;
+        
+        $t-props: opacity;
+        @include trans-config($t-props);
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        align-items: start;
+        gap: 1.2rem;
+        font-size: 2.4rem;
+        padding-inline-start: calc($circle-size + 1.6rem);
+        opacity: 0.75;
+        cursor: pointer;
+
+        &::before {
+            $t-props: background-color, outline-color, opacity;
+            @include trans-config($t-props);
+            content: '';
+            position: absolute;
+            top: $circle-brd-size;
+            left: $circle-brd-size;
+            z-index: 1;
+            display: block;
+            width: $circle-size;
+            height: $circle-size;
+            border-radius: 50%;
+            outline: $circle-brd-size solid var(--col-ui-main-inverse-trans-050);
+            outline-offset: $circle-brd-size;
+        }
+
+        &:has(input[type="radio"]:checked) {
+            opacity: 1;
+
+            &::before {
+                background-color: var(--col-ui-main-inverse);
+                outline-color: var(--col-ui-main-inverse);
+            }
+        }
+
+        &:where(:hover, :focus-visible) {
+            opacity: 1;
+
+            &::before {
+                outline-color: var(--col-ui-main-inverse);
+            }
+        }
+
+        &:active {
+            opacity: 0.75;
+        }
+    }
+
+    &__field-text {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.6rem;
+    }
+
+    &__field-name {
+        font: {
+            size: 2.4rem;
+            weight: 700;
+        };
+        line-height: 1;
+    }
+
+    &__field-descr {
+        font: {
+            size: 1.6rem;
+            weight: 400;
+        };
+        line-height: 1;
+        opacity: 0.75;
+    }
+}

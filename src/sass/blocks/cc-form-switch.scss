@@ -1,0 +1,32 @@
+@use '../core/mix' as *;
+
+.cc-form-switch {
+    display: flex;
+    align-items: center;
+    border: 0.1rem solid var(--col-ui-main-inverse);
+    border-radius: 0.4rem;
+
+    &__item {
+        $t-props: color, background-color;
+        @include trans-config($t-props);
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 2.4rem;
+        font: {
+            size: 2.4rem;
+            weight: 400;
+        }
+        line-height: 1;
+        cursor: pointer;
+
+        &:has(input[type="radio"]:checked) {
+            color: var(--col-ui-main);
+            background-color: var(--col-ui-main-inverse);
+        }
+    }
+}

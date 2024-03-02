@@ -1,0 +1,71 @@
+@use 'vars' as *;
+
+/*
+    Mixin used only for adding visual styles
+    to simplify block's styles debugging.
+*/
+@mixin debug-style($bg-col: hsl(0 100% 50%)) {
+    background-color: rgb($bg-col, 0.5);
+    border: 0.2rem solid $bg-col;
+}
+
+/*
+    <...> a Fancy-BG for the <main>.
+    Original idea of the BG belogns to,
+    and inspired by: https://css-pattern.com/
+*/
+@mixin css-fancy-bg {
+    --_size: 28rem;
+    --_col-trans: var(--col-def-trans, #0000);
+    --_col-primary: var(--col-ui-main);
+    --_col-secondary: var(--col-ui-main-shade);
+    --_gradient: var(--_col-trans) 8%, var(--_col-primary) 0 17%,
+        var(--_col-trans) 0 58%;
+
+    background: {
+        color: var(--_col-secondary);
+        image: linear-gradient(
+                135deg,
+                var(--_col-trans) 20.5%,
+                var(--_col-primary) 0 29.5%,
+                var(--_col-trans) 0
+            ),
+            linear-gradient(45deg, var(--_gradient)),
+            linear-gradient(
+                135deg,
+                var(--_gradient),
+                var(--_col-primary) 0 67%,
+                var(--_col-trans) 0
+            ),
+            linear-gradient(
+                45deg,
+                var(--_gradient),
+                var(--_col-primary) 0 67%,
+                var(--_col-trans) 0 83%,
+                var(--_col-primary) 0 92%,
+                var(--_col-trans) 0
+            );
+        position: 0 calc(var(--_size) / 4), calc(var(--_size) / 2) 0, 0 0, 0 0;
+        size: var(--_size) var(--_size);
+    }
+}
+
+/*
+    <...> for simplify transition configuration
+*/
+@mixin trans-config($t-props, $t-dur: 0.15s, $t-timing-func: ease) {
+    transition: {
+        property: $t-props;
+        duration: $t-dur;
+        timing-function: $t-timing-func;
+    }
+}
+
+/*
+    <...> for reset default list styles
+*/
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

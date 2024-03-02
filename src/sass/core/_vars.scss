@@ -1,0 +1,19 @@
+:root {
+    /* Color */
+    //
+    // —→ [def]
+    --col-def-black: hsl(0 0% 0%);
+    --col-def-white: hsl(0 0% 100%);
+    --col-def-trans: hsl(0 0% 0% / 0);
+    //
+    // —→ [ui]
+    --col-ui-main: hsl(275 67% 8%);
+    --col-ui-main-trans-050: hsl(275 100% 10% / 0.5);
+    --col-ui-main-shade: hsl(275 67% 11%);
+    --col-ui-main-inverse: hsl(275 50% 85%);
+    --col-ui-main-inverse-trans-050: hsl(275 50% 85% / 0.5);
+    --col-ui-main-inverse-trans-025: hsl(275 50% 85% / 0.25);
+
+    /* Font */
+    --font-default: monospace, system-ui;
+}

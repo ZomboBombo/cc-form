@@ -1,0 +1,27 @@
+include _components
+
+doctype html
+
+block variables
+
+html(lang="en")
+    head
+        title= title
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="description" content="App for calculating the daily calorie norm")
+
+        // Размер дефолтной фавиконки: 32x32
+        link(rel="icon" href="/favicon.ico")
+        link(rel="icon" href="/favicons/favicon.svg" type="image/svg+xml")
+        link(rel="apple-touch-icon" href="/favicons/apple-touch-icon.png")
+        link(rel="manifest" href="/favicons/manifest.webmanifest" crossorigin="use-credentials")
+
+        link(rel="stylesheet" href="/css/styles.min.css")
+
+    body
+        block main
+
+        //- Скрипты
+        script(src="./js/main.min.js")
