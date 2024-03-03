@@ -81,16 +81,104 @@
         line-height: 1;
     }
 
-    &__footer {
-        $t-props: visibility;
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 2.8rem;
+    }
+
+    &__action-btn {
+        $t-props: color, background-color, opacity;
         @include trans-config($t-props);
         display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        font: {
+            size: 2rem;
+            weight: 400;
+        };
+        line-height: 1;
+        background-color: var(--col-def-trans);
+        border: 0;
+        cursor: pointer;
+
+        &[type="submit"] {
+            padding: 1.2rem 2.4rem;
+            background-color: var(--col-ui-main-inverse);
+            border-radius: 2.4rem;
+
+            &:where(:hover, :focus-visible) {
+                background-color: var(--col-ui-main-inverse-shade);
+            }
+
+            &:active {
+                opacity: 0.75;
+            }
+        }
+
+        &[type="reset"] {
+            $pseudo-icn-size: 1.2rem;
+
+            position: relative;
+            isolation: isolate;
+            padding-inline-start: calc($pseudo-icn-size + 0.8rem);
+            color: var(--col-ui-main-inverse);
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                z-index: 1;
+                transform: translateY(-50%);
+                display: block;
+                width: $pseudo-icn-size;
+                height: 0.2rem;
+                background-color: currentColor;
+            }
+
+            &::before {
+                transform: rotate(45deg);
+            }
+
+            &::after {
+                transform: rotate(-45deg);
+            }
+
+            &:where(:hover, :focus-visible) {
+                color: var(--col-ui-main-inverse-shade);
+            }
+
+            &:active {
+                opacity: 0.75;
+            }
+        }
+
+        &[disabled],
+        &:disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    }
+
+    &__footer {
+        $t-props: opacity;
+        @include trans-config($t-props);
+        display: none;
         flex-direction: column;
         row-gap: 2.4rem;
-        visibility: hidden;
+        opacity: 0;
+        overflow: hidden;
 
-        .is-active {
-            visibility: visible;
+        &.is-pending {
+            display: flex; 
+        }
+
+        &.is-active {
+            opacity: 1;
         }
     }
 

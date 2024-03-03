@@ -13,6 +13,7 @@
 
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -39,6 +40,7 @@ main {
     align-items: center;
     width: 100%;
     height: 100%;
+    padding: 1.2rem;
     border-radius: 0.8rem;
 }
 
