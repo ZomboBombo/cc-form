@@ -10,6 +10,8 @@ mixin cc-form-options(data = {})
                         name="cc-form-option"
                         value=option.value
                         checked=isFirst
+                        data-cc-form="input-activity"
+                        data-coeff=option.coeff
                     )
 
                     strong.cc-form-options__field-text

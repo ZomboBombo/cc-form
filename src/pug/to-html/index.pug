@@ -5,7 +5,7 @@ append variables
 
 block main
     main
-        form.cc-form(action="/" method="POST")
+        form.cc-form(data-cc-form="form")
             header.cc-form__header
                 hgroup.cc-form__title-box
                     h1.cc-form__title Счётчик калорий
@@ -30,19 +30,31 @@ block main
                     legend.cc-form__fieldset-title Физическая активность
                     +cc-form-options({
                         options: [
-                            {value: 'fa-minimal', name: 'Минимальная', descr: 'Сидячая работа и нет физических нагрузок'},
-                            {value: 'fa-low', name: 'Низкая', descr: 'Редкие, нерегулярные тренировки, активность в быту'},
-                            {value: 'fa-medium', name: 'Средняя', descr: 'Тренировки 3-5 раз в неделю'},
-                            {value: 'fa-high', name: 'Высокая', descr: 'Тренировки 6-7 раз в неделю'},
-                            {value: 'fa-very-high', name: 'Очень высокая', descr: 'Больше 6 тренировок в неделю и физическая работа'},
+                            {value: 'fa-minimal', coeff: '1.2', name: 'Минимальная', descr: 'Сидячая работа и нет физических нагрузок'},
+                            {value: 'fa-low', coeff: '1.375', name: 'Низкая', descr: 'Редкие, нерегулярные тренировки, активность в быту'},
+                            {value: 'fa-medium', coeff: '1.55', name: 'Средняя', descr: 'Тренировки 3-5 раз в неделю'},
+                            {value: 'fa-high', coeff: '1.725', name: 'Высокая', descr: 'Тренировки 6-7 раз в неделю'},
+                            {value: 'fa-very-high', coeff: '1.9', name: 'Очень высокая', descr: 'Больше 6 тренировок в неделю и физическая работа'},
                         ]
                     })
 
                 .cc-form__actions
-                    button.cc-form__action-btn(type="submit" aria-label="Рассчитать норму калорий") Рассчитать
-                    button.cc-form__action-btn(type="reset" aria-label="Сбросить все введённые данные") Очистить поля и расчёт
+                    button.cc-form__action-btn(
+                        type="submit"
+                        aria-label="Рассчитать суточную норму калорий"
+                        disabled
+                        data-cc-form="action"
+                    ) Рассчитать
 
-            footer.cc-form__section.cc-form__footer(data-output="parent")
+                    button.cc-form__action-btn(
+                        type="reset"
+                        title="Очистить поля формы и расчитанные значения"
+                        aria-label="Очистить поля формы и расчитанные значения"
+                        disabled
+                        data-cc-form="action"
+                    ) Сбросить
+
+            footer.cc-form__section.cc-form__footer(data-cc-form="output")
                 h2.cc-form__footer-title Ваша норма калорий
 
                 .cc-form__footer-output-list

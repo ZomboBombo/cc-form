@@ -1,6 +1,18 @@
 mixin cc-form-switch(data = {})
     .cc-form-switch&attributes(attributes)
         label.cc-form-switch__item Мужчина
-            input.visually-hidden(type="radio" name="cc-form-sex" value="male" checked)                        
+            input.visually-hidden(
+                type="radio"
+                name="cc-form-sex"
+                value="male"
+                checked
+                data-cc-form="input-sex"
+            )
+
         label.cc-form-switch__item Женщина
-            input.visually-hidden(type="radio" name="cc-form-sex" value="female")
+            input.visually-hidden(
+                type="radio"
+                name="cc-form-sex"
+                value="female"
+                data-cc-form="input-sex"
+            )
