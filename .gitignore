@@ -1,4 +1,5 @@
 .DS_Store
 build/
 node_modules/
+_BACKUPS/
 npm-debug.*
