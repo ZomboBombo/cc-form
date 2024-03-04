@@ -1,0 +1,413 @@
+:root {
+  /* Color */
+  --col-def-black: hsl(0 0% 0%);
+  --col-def-white: hsl(0 0% 100%);
+  --col-def-trans: hsl(0 0% 0% / 0);
+  --col-ui-main: hsl(275 67% 8%);
+  --col-ui-main-trans-050: hsl(275 100% 10% / 0.5);
+  --col-ui-main-shade: hsl(275 67% 11%);
+  --col-ui-main-inverse: hsl(275 50% 85%);
+  --col-ui-main-inverse-shade: hsl(276 36% 71%);
+  --col-ui-main-inverse-trans-050: hsl(275 50% 85% / 0.5);
+  --col-ui-main-inverse-trans-025: hsl(275 50% 85% / 0.25);
+  /* Font */
+  --font-default: monospace, system-ui;
+}
+
+/*
+    Mixin used only for adding visual styles
+    to simplify block's styles debugging.
+*/
+/*
+    <...> a Fancy-BG for the <main>.
+    Original idea of the BG belogns to,
+    and inspired by: https://css-pattern.com/
+*/
+/*
+    <...> for simplify transition configuration
+*/
+/*
+    <...> for reset default list styles
+*/
+:root {
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0.8rem;
+  font-family: var(--font-default);
+  font-size: 1.6rem;
+  line-height: 1;
+  background-color: var(--col-def-black);
+}
+
+main {
+  --_size: 28rem;
+  --_col-trans: var(--col-def-trans, #0000);
+  --_col-primary: var(--col-ui-main);
+  --_col-secondary: var(--col-ui-main-shade);
+  --_gradient: var(--_col-trans) 8%, var(--_col-primary) 0 17%,
+      var(--_col-trans) 0 58%;
+  background-color: var(--_col-secondary);
+  background-image: linear-gradient(135deg, var(--_col-trans) 20.5%, var(--_col-primary) 0 29.5%, var(--_col-trans) 0), linear-gradient(45deg, var(--_gradient)), linear-gradient(135deg, var(--_gradient), var(--_col-primary) 0 67%, var(--_col-trans) 0), linear-gradient(45deg, var(--_gradient), var(--_col-primary) 0 67%, var(--_col-trans) 0 83%, var(--_col-primary) 0 92%, var(--_col-trans) 0);
+  background-position: 0 calc(var(--_size) / 4), calc(var(--_size) / 2) 0, 0 0, 0 0;
+  background-size: var(--_size) var(--_size);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.cc-form {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  row-gap: 3.2rem;
+  width: max(50rem, 35vw);
+  color: var(--col-def-white);
+}
+.cc-form__header {
+  padding: 2.4rem;
+  background-color: var(--col-ui-main-shade);
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0.6rem 0.6rem var(--col-ui-main);
+}
+.cc-form__title-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.2rem;
+  width: auto;
+  margin: 0 auto;
+}
+.cc-form__title {
+  margin: 0;
+  padding: 0;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.cc-form__title-desc {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.cc-form__section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.2rem;
+  width: auto;
+  margin: 0;
+  padding: 2.4rem;
+  background-color: var(--col-ui-main-inverse-trans-025);
+  border: 0.1rem solid var(--col-ui-main-inverse);
+  border-radius: 1.2rem;
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+}
+.cc-form__wrapp {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3.2rem;
+}
+.cc-form__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.cc-form__fieldset-title {
+  margin: 0;
+  margin-block-end: 1.8rem;
+  padding: 0;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.cc-form__actions {
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+}
+.cc-form__action-btn {
+  transition-property: color, background-color, opacity;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  background-color: var(--col-def-trans);
+  border: 0;
+  cursor: pointer;
+}
+.cc-form__action-btn[type=submit] {
+  padding: 1.2rem 2.4rem;
+  background-color: var(--col-ui-main-inverse);
+  border-radius: 2.4rem;
+}
+.cc-form__action-btn[type=submit]:where(:hover, :focus-visible) {
+  background-color: var(--col-ui-main-inverse-shade);
+}
+.cc-form__action-btn[type=submit]:active {
+  opacity: 0.75;
+}
+.cc-form__action-btn[type=reset] {
+  position: relative;
+  isolation: isolate;
+  padding-inline-start: 2rem;
+  color: var(--col-ui-main-inverse);
+}
+.cc-form__action-btn[type=reset]::before, .cc-form__action-btn[type=reset]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  display: block;
+  width: 1.2rem;
+  height: 0.2rem;
+  background-color: currentColor;
+}
+.cc-form__action-btn[type=reset]::before {
+  transform: rotate(45deg);
+}
+.cc-form__action-btn[type=reset]::after {
+  transform: rotate(-45deg);
+}
+.cc-form__action-btn[type=reset]:where(:hover, :focus-visible) {
+  color: var(--col-ui-main-inverse-shade);
+}
+.cc-form__action-btn[type=reset]:active {
+  opacity: 0.75;
+}
+.cc-form__action-btn[disabled], .cc-form__action-btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.cc-form__footer {
+  transition-property: opacity;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  display: none;
+  flex-direction: column;
+  row-gap: 2.4rem;
+  opacity: 0;
+  overflow: hidden;
+}
+.cc-form__footer.is-pending {
+  display: flex;
+}
+.cc-form__footer.is-active {
+  opacity: 1;
+}
+.cc-form__footer-title {
+  margin: 0;
+  padding: 0;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.cc-form__footer-output-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.cc-form__output {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.8rem;
+}
+.cc-form__output-value {
+  margin: 0;
+  padding: 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.cc-form__output-descr {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+/**
+    Set-up inside "_index" entry point
+    for "/blocks/" folder
+*/
+.cc-form-switch {
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid var(--col-ui-main-inverse);
+  border-radius: 0.4rem;
+}
+.cc-form-switch__item {
+  transition-property: color, background-color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 2.4rem;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+.cc-form-switch__item:has(input[type=radio]:checked) {
+  color: var(--col-ui-main);
+  background-color: var(--col-ui-main-inverse);
+}
+
+.cc-form-params {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.cc-form-params__param {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.2rem;
+}
+.cc-form-params__param-name {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.cc-form-params__param-name-unit {
+  align-self: end;
+  font-size: 0.75em;
+  font-weight: 400;
+  opacity: 0.75;
+}
+.cc-form-params__input {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  border: 0.1rem solid var(--col-ui-main-inverse);
+  border-radius: 0.8rem;
+}
+
+.cc-form-options {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.8rem;
+}
+.cc-form-options__field {
+  transition-property: opacity;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: start;
+  gap: 1.2rem;
+  font-size: 2.4rem;
+  padding-inline-start: calc(0.75em + 1.6rem);
+  opacity: 0.75;
+  cursor: pointer;
+}
+.cc-form-options__field::before {
+  transition-property: background-color, outline-color, opacity;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  z-index: 1;
+  display: block;
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+  outline: 0.2rem solid var(--col-ui-main-inverse-trans-050);
+  outline-offset: 0.2rem;
+}
+.cc-form-options__field:has(input[type=radio]:checked) {
+  opacity: 1;
+}
+.cc-form-options__field:has(input[type=radio]:checked)::before {
+  background-color: var(--col-ui-main-inverse);
+  outline-color: var(--col-ui-main-inverse);
+}
+.cc-form-options__field:where(:hover, :focus-visible) {
+  opacity: 1;
+}
+.cc-form-options__field:where(:hover, :focus-visible)::before {
+  outline-color: var(--col-ui-main-inverse);
+}
+.cc-form-options__field:active {
+  opacity: 0.75;
+}
+.cc-form-options__field-text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
+}
+.cc-form-options__field-name {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.cc-form-options__field-descr {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  opacity: 0.75;
+}
