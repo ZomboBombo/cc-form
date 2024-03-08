@@ -8,11 +8,13 @@
     &__param {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         row-gap: 1.2rem;
     }
 
     &__param-name {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 0.8rem;
         font: {
